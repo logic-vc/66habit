@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'core/constants/colors.dart';
 import 'screens/home_screen.dart';
+import 'providers/habit_provider.dart';
 
 class HabitApp extends StatelessWidget {
   const HabitApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return ChangeNotifierProvider(
+      create: (_) => HabitProvider(),
+      child: MaterialApp(
       title: '66 Habit',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -32,7 +36,8 @@ class HabitApp extends StatelessWidget {
           foregroundColor: AppColors.textPrimary,
         ),
       ),
-      home: const HomeScreen(),
+        home: const HomeScreen(),
+      ),
     );
   }
 }
